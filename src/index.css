@@ -62,7 +62,7 @@ main {
 }
 
 .accordion-item-content {
-  display: none;
+
   padding: 1rem;
   background-color: #2c344a;
 }
@@ -70,7 +70,9 @@ main {
 .open {
   display: block;
 }
-
+.close{
+  display: none;
+}
 .searchable-list {
   margin: 2rem 0;
 }
