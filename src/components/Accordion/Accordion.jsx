@@ -1,9 +1,10 @@
-import { createContext } from "react";
+import { createContext, useContext, useState } from "react";
+import AccordionItem from "./AccordionItem";
 
 const AccordionContext = createContext();
 
 export function useAccordionContext() {
-  const context = React.useContext(AccordionContext);
+  const context = useContext(AccordionContext);
   if (!context) {
     throw new Error(
       "According related components must be used within an AccordionProvider"
@@ -15,24 +16,21 @@ export function useAccordionContext() {
 const Accordion = ({ className, children }) => {
   const [openItemId, setOpenItemId] = useState();
 
-  const openItem = (id) => {
-    setOpenItemId(id);
+  const toggleItem = (id) => {
+    setOpenItemId((prevId) => (prevId === id ? null : id));
   };
-  const closeItem = () => {
-    setOpenItemId(null);
-  };
-
   const contextValue = {
     openItemId,
-    openItem,
-    closeItem,
+    toggleItem,
   };
 
   return (
     <AccordionContext.Provider value={contextValue}>
-      <ul className={className}>{children}</ul>;
+      <ul className={className}>{children}</ul>
     </AccordionContext.Provider>
   );
 };
 
 export default Accordion;
+
+Accordion.item = AccordionItem;
