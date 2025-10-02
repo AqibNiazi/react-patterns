@@ -17,19 +17,17 @@ It’s meant as a **learning resource** and a **reference project** for develope
 ## 📸 Demo / Screenshots
 
 ### Compound Components (Toggle Example)
-<img src="./docs/toggle-demo.gif" alt="Compound Components Demo" width="500" />
+![Compound Components](public/compound_component.png)
 
 ---
 
 ### Render Props (DataFetcher Example)
-<img src="./docs/render-props-demo.png" alt="Render Props Demo" width="500" />
+![Render Props](public/render_props.png)
 
 ---
 
 ### Debouncing (Search Input Example)
-<img src="./docs/debounce-demo.gif" alt="Debounce Demo" width="500" />
-
-👉 Place your screenshots or GIFs inside a `docs/` folder (or `/assets`) and update the file paths above.
+![Debouncing](public/Debouncing.png)
 
 ---
 
@@ -59,7 +57,7 @@ react-patterns/
 ## ⚡ Getting Started
 
 ### Prerequisites
-- Node.js (>= 14)
+- Node.js (>= 20)
 - npm or yarn
 
 ### Installation
@@ -80,69 +78,6 @@ npm run dev
 
 ```bash
 npm run build
-```
-
----
-
-## 🧩 Patterns Implemented
-
-### 1. Compound Components
-
-A flexible way to build UI components that share implicit state.
-Example:
-
-```jsx
-<Toggle>
-  <Toggle.Button />
-  <Toggle.Panel>
-    This content is conditionally visible
-  </Toggle.Panel>
-</Toggle>
-```
-
----
-
-### 2. Render Props
-
-A technique to **share logic without coupling UI**.
-Example:
-
-```jsx
-<DataFetcher url="/api/destinations">
-  {({ data, loading, error }) => (
-    <div>
-      {loading && <p>Loading...</p>}
-      {error && <p>Error loading data</p>}
-      {data && data.map(item => <p key={item.id}>{item.name}</p>)}
-    </div>
-  )}
-</DataFetcher>
-```
-
----
-
-### 3. Debouncing
-
-Prevents expensive operations (like API calls) from firing too often.
-
-Usage in a search input:
-
-```jsx
-const [query, setQuery] = useState("");
-const debouncedQuery = useDebounce(query, 300);
-
-useEffect(() => {
-  if (debouncedQuery) {
-    // API call with debounced query
-  }
-}, [debouncedQuery]);
-
-<input
-  type="text"
-  value={query}
-  onChange={(e) => setQuery(e.target.value)}
-  placeholder="Search..."
-/>
 ```
 
 ---
